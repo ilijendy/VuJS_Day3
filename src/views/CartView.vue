@@ -1,7 +1,23 @@
 <script setup>
 import { useCartStore } from '../stores/cartStore';
+import { computed, ref } from 'vue';
 
 const cartStore = useCartStore();
+
+const name = ref('');
+const address = ref('');
+
+const isFormValid = computed(() => {
+  return name.value.trim().length > 0 && address.value.trim().length > 0 && cartStore.items.length > 0;
+});
+
+const handleCheckout = () => {
+  if (!isFormValid.value) return;
+  cartStore.clearCart();
+  name.value = '';
+  address.value = '';
+  alert('Order placed successfully!');
+};
 </script>
 
 <template>
@@ -59,9 +75,46 @@ const cartStore = useCartStore();
         </table>
       </div>
 
-      <div class="flex justify-end mt-6 space-x-2">
-        <button @click="cartStore.clearCart" class="btn btn-outline btn-error">Clear Cart</button>
-        <button class="btn btn-primary">Checkout</button>
+      <div class="flex justify-end mt-6 mb-10 space-x-2">
+        <button @click="cartStore.clearCart()" class="btn btn-outline btn-error">Clear Cart</button>
+      </div>
+
+      <div class="max-w-xl mt-8 p-6 bg-base-200 rounded-2xl shadow-md">
+        <h2 class="text-2xl font-semibold mb-4">Checkout</h2>
+
+        <form @submit.prevent="handleCheckout" class="space-y-4">
+          <div>
+            <label class="label">
+              <span class="label-text">Name</span>
+            </label>
+            <input
+              v-model="name"
+              type="text"
+              class="input input-bordered w-full"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div>
+            <label class="label">
+              <span class="label-text">Address</span>
+            </label>
+            <textarea
+              v-model="address"
+              class="textarea textarea-bordered w-full"
+              placeholder="Enter your shipping address"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary w-full"
+            :disabled="!isFormValid"
+          >
+            Place Order
+          </button>
+        </form>
       </div>
     </div>
   </div>

@@ -19,12 +19,20 @@ onUnmounted(() => {
       <div class="flex-1">
         <router-link to="/" class="navbar-brand">Stepify</router-link>
       </div>
-      <div class="flex-none">
+      <div class="flex-none flex items-center gap-4">
         <ul class="menu menu-horizontal nav-links">
           <li><router-link to="/" class="nav-link">Home</router-link></li>
-          <li><router-link to="/product/1" class="nav-link">Product Example</router-link></li>
           <li><router-link to="/about" class="nav-link">About</router-link></li>
         </ul>
+
+        <router-link to="/cart" class="btn btn-ghost gap-2">
+          <span>Cart</span>
+          <div class="indicator">
+            <span class="indicator-item badge badge-secondary">
+              {{ cartStore.totalItems }}
+            </span>
+          </div>
+        </router-link>
       </div>
     </div>
   </div>

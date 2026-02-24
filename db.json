@@ -1,0 +1,32 @@
+{
+  "products": [
+    {
+      "id": "101",
+      "title": "Orbit Wireless Headphones",
+      "description": "Comfort-focused wireless headphones with clear mids, punchy bass, and 30-hour battery life.",
+      "price": 129.99,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80",
+      "imageAlt": "Black wireless headphones on a white background",
+      "tags": [
+        "audio",
+        "wireless",
+        "best-seller"
+      ],
+      "stock": 10
+    },
+    {
+      "id": "102",
+      "title": "Pulse Smartwatch",
+      "description": "Track heart rate, sleep, and daily activity with a bright display and water-resistant build.",
+      "price": 89.5,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80",
+      "imageAlt": "Smartwatch close-up on a soft background",
+      "tags": [
+        "wearables",
+        "fitness",
+        "new"
+      ],
+      "stock": 0
+    }
+  ]
+}
